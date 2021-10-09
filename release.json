@@ -6,9 +6,9 @@
     "desc": "My Implementation Guide - July 2021",
     "sequence": "Trial Use",
     "history_template_repo": "https://github.com/hl7-be/fhir-ig-history-template.git",
-    "intro":"",
-    "category" :"",
-    "ci_url" :""  ,
+    "intro":"intro text",
+    "category" :"test",
+    "ci_url" :"http://localhost/"  ,
     "org" :"MYSELF"  
 
 
