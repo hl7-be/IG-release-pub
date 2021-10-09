@@ -217,10 +217,10 @@ os.system('java -jar ..\publisher.jar -ig ig.ini -publish '+ig_canonical+'/'+ig_
 print('\n### Creating the web root folder')
 if (not(os.path.exists(webrootfolder))):
 #  os.mkdir(webrootfolder)
-  os.makedirs(os.path.join(webrootfolder,ig_id), exist_ok=True)
+  os.makedirs(os.path.join(webrootfolder), exist_ok=True)
 
 #os.system('xcopy /s /y ..\\\\* ' + os.path.join(webrootfolder,''))
-copytree(os.path.join('.','fhir-ig-history-template'), os.path.join(webrootfolder,ig_id),dirs_exist_ok=True, ignore=ignore_patterns('.git', 'package-list.json'))  
+copytree(os.path.join('.','fhir-ig-history-template'), os.path.join(webrootfolder),dirs_exist_ok=True, ignore=ignore_patterns('.git', 'package-list.json'))  
 
 
 
@@ -228,7 +228,7 @@ copytree(os.path.join('.','fhir-ig-history-template'), os.path.join(webrootfolde
 
 print('\n### Reading and checking publish.ini')
 ## Read and fix publish.ini
-piinifilename=(os.path.join(webrootfolder, ig_id, 'publish.ini'))
+piinifilename=(os.path.join(webrootfolder, 'publish.ini'))
 if (os.path.exists(piinifilename)):
     publishini.read(piinifilename)
     if (publishini['website']['url'] != ig_canonical):
@@ -347,8 +347,8 @@ copytree('output', os.path.join(webrootfolder,ig_version,''),dirs_exist_ok=True,
 print('\n### Running the publication update procedure')
 #os.system('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder+ ' -registry ../ig-registry/fhir-ig-list.json -history ../fhir-ig-history-template -filter y')
 
-print('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder+'/'+ ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -filter testrel')
-os.system('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder + '/' + ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -filter testrel')
+print('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder +  ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -filter testrel')
+os.system('java -jar ..\publisher.jar -publish-update -root . -folder '+ webrootfolder  + ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template')
 
 
 #3.10
