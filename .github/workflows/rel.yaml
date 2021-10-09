@@ -1,12 +1,21 @@
 name: Create resources
 
+# Controls when the action will run. 
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    paths:
-      - 'packages/'
-      - 'extracat_metadata2.py'
-      - '.github/workflows/csv_creation.yml'
-
+    branches: 
+      - main
+      - master
+      - draft
+      - candidate
+  pull_request:
+    branches: 
+      - main
+      - master
+      - draft
+      - candidate
+      
 jobs:
   build:
     runs-on: ubuntu-latest
