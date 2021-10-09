@@ -8,7 +8,8 @@ fsh-generated
 # Don't commit this because it's so large #
 ###########################################
 /input-cache/publisher.jar
-
+/input-cache
+/www
 # Windows generated files #
 ###########################
 Thumbs.db
