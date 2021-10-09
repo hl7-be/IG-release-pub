@@ -1,14 +1,16 @@
 {
     "ig": "testrel",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "status": "ballot",
     "date": "2021-10-12",
     "desc": "My Implementation Guide - July 2021",
     "sequence": "Trial Use",
     "history_template_repo": "https://github.com/hl7-be/fhir-ig-history-template.git",
-"intro":"",
-"category" :"",
-"ci_url" :""  
+    "intro":"",
+    "category" :"",
+    "ci_url" :""  ,
+    "org" :"MYSELF"  
+
 
 }
     

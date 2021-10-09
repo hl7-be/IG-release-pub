@@ -41,6 +41,7 @@ igrootfolder = os.path.join('..',release['ig'])
 ig_intro = release.get("intro")
 ig_category = release.get("ig_category")
 ci_url = release.get("ci_url")
+org = release.get("org")
 #ci_url = "http://build.fhir.org/ig/costateixeira/testrel/"
 
 
@@ -215,11 +216,11 @@ os.system('java -jar ..\publisher.jar -ig ig.ini -publish '+ig_canonical+'/'+ig_
 #1.2 create webroot folder
 print('\n### Creating the web root folder')
 if (not(os.path.exists(webrootfolder))):
-  os.mkdir(webrootfolder)
-
+#  os.mkdir(webrootfolder)
+  os.makedirs(os.path.join(webrootfolder,ig_id), exist_ok=True)
 
 #os.system('xcopy /s /y ..\\\\* ' + os.path.join(webrootfolder,''))
-copytree(os.path.join('..','fhir-ig-history-template'), os.path.join(webrootfolder,''),dirs_exist_ok=True, ignore=ignore_patterns('.git', 'package-list.json'))  
+copytree(os.path.join('.','fhir-ig-history-template'), os.path.join(webrootfolder,ig_id),dirs_exist_ok=True, ignore=ignore_patterns('.git', 'package-list.json'))  
 
 
 
@@ -227,7 +228,7 @@ copytree(os.path.join('..','fhir-ig-history-template'), os.path.join(webrootfold
 
 print('\n### Reading and checking publish.ini')
 ## Read and fix publish.ini
-piinifilename=(os.path.join(webrootfolder,'publish.ini'))
+piinifilename=(os.path.join(webrootfolder, ig_id, 'publish.ini'))
 if (os.path.exists(piinifilename)):
     publishini.read(piinifilename)
     if (publishini['website']['url'] != ig_canonical):
@@ -248,21 +249,21 @@ else:
     """)
     publishini['website']['url'] = ig_canonical
     publishini['website']['org'] = org
-    with open(os.path.join('.',webrootfolder,'publish.ini'), 'w') as inifile:
+    with open(os.path.join('.',webrootfolder,ig_id,'publish.ini'), 'w') as inifile:
         publishini.write(inifile)
 
 rebuildpackagelist = False
 # check if package-list exists, and if not (or if it is the default), create a new one
 
-if os.path.exists(os.path.join('.',webrootfolder,'package-list.json')):
+if os.path.exists(os.path.join('.',webrootfolder,ig_id,'package-list.json')):
     print('package-list already exists, loading')
-    with open(os.path.join('.',webrootfolder,'package-list.json')) as fd:
+    with open(os.path.join('.',webrootfolder,ig_id,'package-list.json')) as fd:
       package_list = json.load(fd) 
       if package_list['canonical']=='url':
         package_list = new_package_list
 else:
     package_list = new_package_list.copy()        
-    with open(os.path.join('.',webrootfolder,'package-list.json'), 'w') as outfile:
+    with open(os.path.join('.',webrootfolder,ig_id,'package-list.json'), 'w') as outfile:
         json.dump(package_list, outfile, indent=2)
 
 
@@ -306,7 +307,7 @@ else:
 
 ## write package-list
 print('\n### writing package-list.json')
-with open(os.path.join('.',webrootfolder,'package-list.json'), 'w') as outfile:
+with open(os.path.join('.',webrootfolder,ig_id,'package-list.json'), 'w') as outfile:
     json.dump(package_list, outfile, indent=2)
 
 
@@ -314,8 +315,8 @@ with open(os.path.join('.',webrootfolder,'package-list.json'), 'w') as outfile:
 
 #3.8 check if the release folder is already there
 print('\n### Checking if the release folder already exists')
-if (not(os.path.exists(os.path.join('.',webrootfolder,ig_version) ))):
-  os.mkdir(os.path.join('.',webrootfolder,ig_version))
+if (not(os.path.exists(os.path.join('.',webrootfolder,ig_id,ig_version) ))):
+  os.mkdir(os.path.join('.',webrootfolder,ig_id,ig_version))
 else:
     print('')
     reply = str(input('\n### Release folder already exists. Continue (y/n)? ')).lower().strip()
@@ -323,8 +324,8 @@ else:
         print('\n### Canceling.')
         exit(0)
     else:
-        rmtree(os.path.join('.',webrootfolder,ig_version))
-        os.mkdir(os.path.join('.',webrootfolder,ig_version))
+        rmtree(os.path.join('.',webrootfolder,ig_id,ig_version))
+        os.mkdir(os.path.join('.',webrootfolder,ig_id,ig_version))
 ##### this must really be fixed. set vars and then do stuff.
 
 
@@ -333,25 +334,25 @@ else:
 #3.7 
 #os.system('xcopy /s /y output ' + webrootfolder )
 print('\n### Copying the built ig to the root publication folder')
-copytree('output', os.path.join(webrootfolder,''),dirs_exist_ok=True, ignore=ignore_patterns('.git'))  
+copytree('output', os.path.join(webrootfolder,ig_id,''),dirs_exist_ok=True, ignore=ignore_patterns('.git'))  
 
 
 
 #os.system('xcopy /s /y output ' + os.path.join('.',webrootfolder,ig_version,'' ))
 print('\n### Copying the built ig to the corresponding publication folder')
-copytree('output', os.path.join(webrootfolder,ig_version,''),dirs_exist_ok=True, ignore=ignore_patterns('.git'))  
+copytree('output', os.path.join(webrootfolder,ig_id,ig_version,''),dirs_exist_ok=True, ignore=ignore_patterns('.git'))  
 
 
 #3.9
 print('\n### Running the publication update procedure')
 #os.system('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder+ ' -registry ../ig-registry/fhir-ig-list.json -history ../fhir-ig-history-template -filter y')
-os.system('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder+ ' -registry ../ig-registry/fhir-ig-list.json -history ../fhir-ig-history-template')
+os.system('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder+ '/' +ig_id+ ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -filter testrel')
 
 
 #3.10
 #os.system('xcopy /s /y www\\assets www\\assets-hist')
 print('### Copying the ig template to the history template')
-destination = copytree(os.path.join(webrootfolder,'assets'), os.path.join(webrootfolder,'assets-hist',''),dirs_exist_ok=True, ignore=ignore_patterns('.git'))
+destination = copytree(os.path.join(webrootfolder,ig_id,'assets'), os.path.join(webrootfolder,ig_id,'assets-hist',''),dirs_exist_ok=True, ignore=ignore_patterns('.git'))
 
 #print(json.dumps(package_list, indent=2))
 
