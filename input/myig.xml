@@ -7,7 +7,7 @@
   </extension>-->
   <url value="http://localhost/testrel/ImplementationGuide/testrel"/>
   <!-- This version will propagate to all artifacts unless the "propagate-version" extension is overridden -->
-  <version value="0.0.2"/>
+  <version value="0.0.12"/>
   <name value="xxxYourComputableMyIGNameHere"/>
   <title value="xxxYour User Friendly Name for MyIG Here"/>
   <status value="draft"/>

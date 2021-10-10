@@ -1,11 +1,11 @@
 {
     "ig": "testrel",
-    "version": "0.0.2",
+    "version": "0.0.12",
     "status": "ballot",
     "date": "2021-10-13",
     "desc": "My Implementation Guide - August 2021",
     "sequence": "Trial Use",
-    "history_template_repo": "https://github.com/hl7-be/fhir-ig-history-template.git",
+    "history_template_repo": "https://github.com/openhie/fhir-ig-history-template.git",
     "intro":"intro text",
     "category" :"test",
     "ci_url" :"http://localhost/"  ,
