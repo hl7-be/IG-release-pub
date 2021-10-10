@@ -11,6 +11,11 @@ import xmltodict
 from shutil import copytree, ignore_patterns, copyfile, rmtree
 #from github import Github
 
+
+skip_1_build = False # Set to True for faster debugging
+
+
+
 publishini = configparser.ConfigParser()
 igini = configparser.ConfigParser()
 use_git_submodules = False
@@ -198,7 +203,6 @@ print(os.getcwd())
 
 
 # Try and build the IG
-skip_1_build = True
 if not(skip_1_build):
   print('\n### Running the publisher to see if everything is ok')
   result = os.system('java -jar ..\publisher.jar -ig ig.ini') 
