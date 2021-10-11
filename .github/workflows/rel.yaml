@@ -32,36 +32,50 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          pip install pandas csv-diff
+          pip install pandas csv-diff requests json base64 os pprint xml configparser xmltodict shutil
+
+
+
 
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
-          files: "package.json, LICENSE, README.md"
+          files: "release.json"
 
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'true'
         # Only runs if all of the files exists
-        run: echo All files exists!
+        run: echo file exists!
 
       - name: cancelling
         if: steps.check_files.outputs.files_exists != 'true'
         uses: andymckay/cancel-action@0.2
       
 
-      - name: execute py script # run sj-gobierno.py to get the latest data
-        run: python extract_metadata2.py
+      - name: execute py script # run 
+        run: python release.py
 
-      - name: commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m "create resources.csv" -a
-          
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
+      - name: Deploy candidate
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        if: ${{ steps.branch-name.outputs.is_default }} == 'false'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main  
+          branch: gh-pages # The branch the action should deploy to.
+          folder: ./output # The folder the action should deploy.
+          target-folder: releases/${{ steps.branch-name.outputs.current_branch }}
+          commit-message: Deploy candidate release to gh-pages
+          clean: false 
+
+
+#      - name: commit files
+#        run: |
+#          git config --local user.email "action@github.com"
+#          git config --local user.name "GitHub Action"
+#          git add -A
+#          git diff --quiet && git diff --staged --quiet || git commit -m "create resources.csv" -a
+          
+#      - name: push changes
+#        uses: ad-m/github-push-action@v0.6.0
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: main  
