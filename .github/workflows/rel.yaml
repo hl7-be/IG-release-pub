@@ -51,7 +51,24 @@ jobs:
       - name: cancelling
         if: steps.check_files.outputs.files_exists != 'true'
         uses: andymckay/cancel-action@0.2
-      
+
+      - name: Get branch name
+        run: echo ${GITHUB_REF##*/}
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Update the image to the latest publisher
+        uses: docker://hl7fhir/ig-publisher-base:latest
+        with:
+          # Get the latest publisher - don't run the batch script but run the line directly
+          args: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o ./input-cache/publisher.jar --create-dirs
+          
+      - name: Run the IG publisher
+        uses: docker://hl7fhir/ig-publisher-base:latest
+        with:
+          # Run the publisher - don't run the batch script but run the line directly
+          args: java -jar ./input-cache/publisher.jar publisher -ig .
+
+
 
       - name: execute py script # run 
         run: python release.py
