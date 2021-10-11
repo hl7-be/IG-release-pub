@@ -11,9 +11,8 @@ import xmltodict
 from shutil import copytree, ignore_patterns, copyfile, rmtree
 #from github import Github
 
-
-skip_1_build = False # Set to True for faster debugging
-
+skip_1_build = False # Set to True for skip the initial IG build for a few seconds/minutes faster debugging
+keep_release_token = False # Normally False. Keep the release JSON token True to be able to run this script several times without havint to restore the token
 
 
 publishini = configparser.ConfigParser()
@@ -168,10 +167,6 @@ new_package_list = {
     }
   ]
 }
-
-
-
-
 
 
 
@@ -364,11 +359,12 @@ destination = copytree(os.path.join(webrootfolder,'assets'), os.path.join(webroo
 
 #print(json.dumps(package_list, indent=2))
 
-# remove / rename the release token file
-print('\n### Removing the release token file')
-if os.path.exists(os.path.join('..','release.json')):
-    copyfile(os.path.join('..','release.json'), ('../'+'release-'+ig_version+'.json'))
-    os. remove(os.path.join('..','release.json'))
+if (keep_release_token):
+  # remove / rename the release token file
+  print('\n### Removing the release token file')
+  if os.path.exists(os.path.join('..','release.json')):
+      copyfile(os.path.join('.','release.json'), ('../'+'release-'+ig_version+'.json'))
+      os. remove(os.path.join('.','release.json'))
 
 
 exit(0)
