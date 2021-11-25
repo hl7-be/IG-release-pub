@@ -47,42 +47,22 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pandas csv-diff requests pybase64 configparser xmltodict
-          python release.py
-          
 
-
-
-
-      - name: Check file existence
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "release.json"
-
-      - name: File exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        # Only runs if all of the files exists
-        run: echo file exists!
-
-      - name: cancelling
-        if: steps.check_files.outputs.files_exists != 'true'
-        uses: andymckay/cancel-action@0.2
-
-      - name: Get branch name
-        run: echo ${GITHUB_REF##*/}
+#      - name: Get branch name
+#        run: echo ${GITHUB_REF##*/}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Update the image to the latest publisher
-        uses: docker://hl7fhir/ig-publisher-base:latest
-        with:
-          # Get the latest publisher - don't run the batch script but run the line directly
-          args: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o ./input-cache/publisher.jar --create-dirs
+#      - uses: actions/checkout@v2
+#      - name: Update the image to the latest publisher
+#        uses: docker://hl7fhir/ig-publisher-base:latest
+#        with:
+#          # Get the latest publisher - don't run the batch script but run the line directly
+#          args: curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o ./input-cache/publisher.jar --create-dirs
           
-      - name: Run the IG publisher
-        uses: docker://hl7fhir/ig-publisher-base:latest
-        with:
-          # Run the publisher - don't run the batch script but run the line directly
-          args: java -jar ./input-cache/publisher.jar publisher -ig .
+#      - name: Run the IG publisher
+#        uses: docker://hl7fhir/ig-publisher-base:latest
+#        with:
+#          # Run the publisher - don't run the batch script but run the line directly
+#          args: java -jar ./input-cache/publisher.jar publisher -ig .
 
 
 
