@@ -200,7 +200,7 @@ print(os.getcwd())
 # Try and build the IG
 if not(skip_1_build):
   print('\n### Running the publisher to see if everything is ok')
-  result = os.system('java -jar ./publisher.jar -ig ig.ini') 
+  result = os.system('java -jar ./input-cache/publisher.jar -ig ig.ini') 
   if (result!=0):
       print('Error: IG publication process not successful. Check the IG')
       exit(2)
@@ -211,7 +211,7 @@ if not(skip_1_build):
 
 #3.5
 print('\n### Running the publisher to prepare the current version for publishing')
-os.system('java -jar ./publisher.jar -ig ig.ini -publish '+ig_canonical+'/'+ig_version)
+os.system('java -jar ./input-cache/publisher.jar -ig ig.ini -publish '+ig_canonical+'/'+ig_version)
 
 
 #1.2 create webroot folder
@@ -348,8 +348,8 @@ copytree('output', os.path.join(webrootfolder,ig_version,''),dirs_exist_ok=True,
 print('\n### Running the publication update procedure')
 #os.system('java -jar ..\publisher.jar -publish-update -folder '+ webrootfolder+ ' -registry ../ig-registry/fhir-ig-list.json -history ../fhir-ig-history-template -noconfirm')
 
-print('java -jar ./publisher.jar -publish-update -folder '+ webrootfolder +  ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -noconfirm')
-os.system('java -jar ./publisher.jar -publish-update -root . -folder '+ webrootfolder  + ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -noconfirm')
+print('java -jar ./input-cache/publisher.jar -publish-update -folder '+ webrootfolder +  ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -noconfirm')
+os.system('java -jar ./input-cache/publisher.jar -publish-update -root . -folder '+ webrootfolder  + ' -registry ./ig-registry/fhir-ig-list.json -history ./fhir-ig-history-template -noconfirm')
 
 
 #3.10
