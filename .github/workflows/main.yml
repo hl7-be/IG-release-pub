@@ -20,12 +20,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
-          files: "./release.json"
+          files: "release.json"
 
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'false'
@@ -34,9 +37,6 @@ jobs:
           echo Release token does not exist, exiting..
           exit 1
     
-      - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner
-
       - name: setup python
         uses: actions/setup-python@v2
         with:
