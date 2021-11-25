@@ -64,6 +64,12 @@ jobs:
           # Run the publisher - don't run the batch script but run the line directly
           args: java -jar ./input-cache/publisher.jar publisher -ig .
 
+      - name: actions/setup-node
+        uses: actions/setup-node@v1.4.1
+        with:
+          node-version: "13.9.0"
+      - name: npm install
+        run: npm install sushi fsh-sushi
 
 
       - name: execute py script # run 
