@@ -65,11 +65,12 @@ jobs:
           args: java -jar ./input-cache/publisher.jar publisher -ig .
 
       - name: actions/setup-node
-        uses: actions/setup-node@v1.4.1
+        uses: actions/setup-node@v2
         with:
-          node-version: "13.9.0"
+          node-version: "14"
       - name: npm install
         run: npm install sushi fsh-sushi
+
 
 
       - name: execute py script # run 
