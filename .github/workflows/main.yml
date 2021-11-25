@@ -69,7 +69,7 @@ jobs:
         with:
           node-version: "14"
       - name: npm install
-        run: npm install sushi fsh-sushi
+        run: npm install -g sushi fsh-sushi
 
 
 
