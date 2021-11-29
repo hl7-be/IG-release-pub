@@ -42,19 +42,6 @@ jobs:
         with:
           python-version: '3.7.7' # install the python version needed
 
-
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: |
-            ~/.npm
-            ./
-
-
     
           
       - name: install python packages
