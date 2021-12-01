@@ -8,7 +8,7 @@
 
 
 id: testrel
-packageId: my.fhir.uv.testrel
+packageId: hl7.fhir.be.mine.testrel
 canonical: https://costateixeira.github.io/testrel/
 url: https://costateixeira.github.io/testrel/ImplementationGuide/testrel
 name: ExampleIG
