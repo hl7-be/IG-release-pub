@@ -1,0 +1,31 @@
+{
+  "package-id": "my.fhir.uv.testrel",
+  "title": "HL7 FHIR Implementation Guide: Example IG Release 1 - US Realm | STU1",
+  "canonical": "https://costateixeira.github.io/testrel",
+  "introduction": "intro text",
+  "category": null,
+  "list": [
+    {
+      "version": "current",
+      "desc": "Continuous Integration Build",
+      "path": "http://localhost/",
+      "status": "ci-build",
+      "current": true
+    },
+    {
+      "version": "0.0.14",
+      "status": "ballot",
+      "date": "2021-10-13",
+      "desc": "My Implementation Guide - August 2021",
+      "sequence": "Trial Use",
+      "history_template_repo": "https://github.com/openhie/fhir-ig-history-template.git",
+      "intro": "intro text",
+      "category": "test",
+      "ci_url": "http://localhost/",
+      "org": "MYSELF",
+      "path": "https://costateixeira.github.io/testrel/0.0.14",
+      "fhirversion": "4.0.1",
+      "current": true
+    }
+  ]
+}
