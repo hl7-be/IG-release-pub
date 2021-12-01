@@ -1,0 +1,9 @@
+[
+  {
+    "id": "testrel",
+    "type": "ImplementationGuide",
+    "url": "http://localhost/testrel/ImplementationGuide/testrel",
+    "version": "0.0.14",
+    "name": "xxxYourComputableMyIGNameHere"
+  }
+]

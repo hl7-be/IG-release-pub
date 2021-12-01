@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:fhir="http://hl7.org/fhir/feed" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>MYSELF FHIR Publications</title>
+    <description>New publications by MYSELF></description>
+    <link>http://localhost/testrel/package-feed.xml</link>
+    <generator>HL7, Inc FHIR Publication tooling</generator>
+    <lastBuildDate>Wed, 01 Dec 2021 12:05:15 GMT</lastBuildDate>
+    <atom:link href="http://localhost/testrel/package-feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 01 Dec 2021 12:05:15</pubDate>
+    <language>en></language>
+    <ttl>600</ttl>
+    <item>
+      <title>xxxYour User Friendly Name for MyIG Here</title>
+      <description>My Implementation Guide - August 2021</description>
+      <link>http://localhost/testrel/0.0.14/index.html</link>
+      <guid isPermaLink="true">http://localhost/testrel/0.0.14/index.html</guid>
+      <dc:creator>MYSELF</dc:creator>
+      <fhir:version>4.0.1</fhir:version>
+      <fhir:kind>fhir.ig</fhir:kind>
+      <pubDate>Wed, 13 Oct 2021 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
