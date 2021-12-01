@@ -66,15 +66,10 @@ jobs:
 
       - name: See if python is installed
         run: python --version
-  
+           
           
-          
-          
-          
-#      - name: install modules
-#        uses: docker://hl7fhir/ig-publisher-base:latest
-#        with:
-#          args: pip3 install pandas csv-diff requests pybase64 configparser xmltodict
+      - name: sushi install
+        run: npm install -g sushi fsh-sushi
           
 
       - name: Execute python script
