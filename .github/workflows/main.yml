@@ -80,10 +80,7 @@ jobs:
           
 
       - name: Execute python script
-        uses: docker://hl7fhir/ig-publisher-base:latest
-        with:
-          # Run the publisher - don't run the batch script but run the line directly
-          args: python release.py
+        run: python release.py
 
 
 
