@@ -65,9 +65,7 @@ jobs:
           pip install pandas csv-diff requests pybase64 configparser xmltodict
 
       - name: See if python is installed
-        uses: docker://hl7fhir/ig-publisher-base:latest
-        with:
-          args: python --version
+        run: python --version
   
           
           
