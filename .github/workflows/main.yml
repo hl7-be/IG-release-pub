@@ -64,13 +64,13 @@ jobs:
       - name: install pip
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          args: curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+          args: apt install python3
           
           
       - name: install pip
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          args: python2 get-pip.py
+          args: python --version
   
           
           
@@ -79,7 +79,7 @@ jobs:
       - name: install modules
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          args: /home/publisher/.local/bin/pip2 install pandas csv-diff requests pybase64 configparser xmltodict
+          args: pip3 install pandas csv-diff requests pybase64 configparser xmltodict
           
 
       - name: Execute python script
