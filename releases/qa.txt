@@ -1,0 +1,14 @@
+﻿xxxYourComputableMyIGNameHere : Validation Results
+=========================================
+
+err = 1, warn = 2, info = 0
+IG Publisher Version: 1.1.89
+Generated Wed Dec 01 11:55:14 UTC 2021. FHIR version 4.0.1 for my.fhir.uv.testrel#0.0.14 (canonical = http://localhost/testrel)
+ Build Errors : 0 / 1 / 0
+ /home/runner/work/testrel/testrel/input/myig : 1 / 1 / 1
+</table>
+== n/a ==
+WARNING: ImplementationGuide.id: The Implementation Guide Resource id should be my.fhir.uv.testrel
+== input/myig.xml ==
+WARNING: ImplementationGuide/testrel: ImplementationGuide: ig-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation' Rule 'Name should be usable as an identifier for the module by machine processing applications such as code generation' Failed
+ERROR: ImplementationGuide/testrel: ImplementationGuide.definition: ImplementationGuide.definition.resource: minimum required = 1, but only found 0 (from http://hl7.org/fhir/StructureDefinition/ImplementationGuide)
