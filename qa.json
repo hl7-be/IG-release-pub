@@ -1,9 +1,9 @@
 {
   "url": "https://costateixeira.github.io/testrel/ImplementationGuide/testrel",
   "name": "ExampleIG",
-  "package-id": "my.fhir.uv.testrel",
+  "package-id": "hl7.fhir.be.mine.testrel",
   "ig-ver": "0.0.14",
-  "date": "Wed, 01 Dec, 2021 13:59:32 +0000",
+  "date": "Wed, 01 Dec, 2021 15:12:43 +0000",
   "errs": 1,
   "warnings": 1,
   "hints": 0,

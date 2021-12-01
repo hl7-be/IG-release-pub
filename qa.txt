@@ -3,11 +3,11 @@
 
 err = 1, warn = 1, info = 0
 IG Publisher Version: 1.1.89
-Generated Wed Dec 01 13:59:40 UTC 2021. FHIR version 4.0.1 for my.fhir.uv.testrel#0.0.14 (canonical = https://costateixeira.github.io/testrel)
- Build Errors : 0 / 1 / 0
- /home/runner/work/testrel/testrel/fsh-generated/resources/ImplementationGuide-testrel : 1 / 0 / 1
+Generated Wed Dec 01 15:12:54 UTC 2021. FHIR version 4.0.1 for hl7.fhir.be.mine.testrel#0.0.14 (canonical = https://costateixeira.github.io/testrel)
+ Build Errors : 0 / 0 / 0
+ /home/runner/work/testrel/testrel/fsh-generated/resources/ImplementationGuide-testrel : 1 / 1 / 1
 </table>
 == n/a ==
-WARNING: ImplementationGuide.id: The Implementation Guide Resource id should be my.fhir.uv.testrel
 == fsh-generated/resources/ImplementationGuide-testrel.json ==
-ERROR: ImplementationGuide/testrel: ImplementationGuide.definition: ImplementationGuide.definition.resource: minimum required = 1, but only found 0 (from http://hl7.org/fhir/StructureDefinition/ImplementationGuide)
+ERROR: ImplementationGuide/hl7.fhir.be.mine.testrel: ImplementationGuide.definition: ImplementationGuide.definition.resource: minimum required = 1, but only found 0 (from http://hl7.org/fhir/StructureDefinition/ImplementationGuide)
+WARNING: ImplementationGuide.jurisdiction: The resource should declare its jurisdiction to match the package id (hl7.fhir.be.mine.testrel, jurisdiction = urn:iso:std:iso:3166#BE) (for FSH: 'jurisdiction: urn:iso:std:iso:3166#BE "null"')

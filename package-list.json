@@ -1,5 +1,5 @@
 {
-  "package-id": "my.fhir.uv.testrel",
+  "package-id": "hl7.fhir.be.mine.testrel",
   "title": "HL7 FHIR Implementation Guide: Example IG Release 1 - US Realm | STU1",
   "canonical": "https://costateixeira.github.io/testrel",
   "introduction": "intro text",

@@ -1,6 +1,6 @@
 {
   "version": "0.0.14",
   "fhirVersion": "[4.0.1]",
-  "date": "20211201135921",
-  "name": "my.fhir.uv.testrel"
+  "date": "20211201151230",
+  "name": "hl7.fhir.be.mine.testrel"
 }

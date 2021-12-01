@@ -5,14 +5,14 @@
     <description>New Packages published by MYSELF></description>
     <link>https://costateixeira.github.io/testrel/package-feed.xml</link>
     <generator>HL7, Inc FHIR Publication tooling</generator>
-    <lastBuildDate>Wed, 01 Dec 2021 01:59:41 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 01 Dec 2021 03:12:56 GMT</lastBuildDate>
     <atom:link href="https://costateixeira.github.io/testrel/package-feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Dec 2021 01:59:41</pubDate>
+    <pubDate>Wed, 01 Dec 2021 03:12:56</pubDate>
     <language>en></language>
     <ttl>600</ttl>
     <item>
-      <title>my.fhir.uv.testrel#0.0.14</title>
-      <description>Example IG exercises many of the fields in a SUSHI configuration. (built Wed, Dec 1, 2021 13:59+0000+00:00)</description>
+      <title>hl7.fhir.be.mine.testrel#0.0.14</title>
+      <description>Example IG exercises many of the fields in a SUSHI configuration. (built Wed, Dec 1, 2021 15:12+0000+00:00)</description>
       <link>https://costateixeira.github.io/testrel/0.0.14/package.tgz</link>
       <guid isPermaLink="true">https://costateixeira.github.io/testrel/0.0.14/package.tgz</guid>
       <dc:creator>MYSELF</dc:creator>
