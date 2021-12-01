@@ -1,5 +1,10 @@
 name: Create resources
 
+# 1. install python 3: apt install python3??
+# 2. install pim modules: pip install pandas csv-diff requests pybase64 configparser xmltodict
+
+
+
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -37,12 +42,6 @@ jobs:
           echo Release token does not exist, exiting..
           exit 1
         
-        
-
-#      - name: Get branch name
-#        run: echo ${GITHUB_REF##*/}
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - uses: actions/checkout@v2
       - name: Update the image to the latest publisher
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
@@ -55,19 +54,17 @@ jobs:
           # Run the publisher - don't run the batch script but run the line directly
           args: java -jar ./input-cache/publisher.jar publisher -ig .
 
-      - name: see if python is installed
-        uses: docker://hl7fhir/ig-publisher-base:latest
+      - name: setup python
+        uses: actions/setup-python@v2
         with:
-          args: python --version
-
+          python-version: '3.7.7' # install the python version needed
 
       - name: install pip
-        uses: docker://hl7fhir/ig-publisher-base:latest
-        with:
-          args: sudo apt install python3
-          
-          
-      - name: install pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas csv-diff requests pybase64 configparser xmltodict
+
+      - name: See if python is installed
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
           args: python --version
@@ -76,10 +73,10 @@ jobs:
           
           
           
-      - name: install modules
-        uses: docker://hl7fhir/ig-publisher-base:latest
-        with:
-          args: pip3 install pandas csv-diff requests pybase64 configparser xmltodict
+#      - name: install modules
+#        uses: docker://hl7fhir/ig-publisher-base:latest
+#        with:
+#          args: pip3 install pandas csv-diff requests pybase64 configparser xmltodict
           
 
       - name: Execute python script
