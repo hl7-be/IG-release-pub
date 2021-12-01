@@ -70,10 +70,23 @@ jobs:
           
       - name: sushi install
         run: npm install -g sushi fsh-sushi
-          
+
+
+
+      - name: jekyll install
+        run: | 
+          sudo apt-get install ruby-full build-essential zlib1g-dev
+          gem install jekyll bundler
+
+
+      - name: sushi install
+        run: npm install -g sushi fsh-sushi
+
+
 
       - name: Execute python script
         run: python release.py
+
 
 
 
@@ -85,6 +98,8 @@ jobs:
 #          node-version: "14"
 #      - name: npm install
 #        run: npm install -g sushi fsh-sushi
+
+
 
 
 
