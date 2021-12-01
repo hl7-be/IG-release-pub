@@ -84,6 +84,9 @@ jobs:
 
 
 
+      - name: Execute python script
+        run: ls
+
 
 
 
@@ -104,7 +107,7 @@ jobs:
         if: ${{ steps.branch-name.outputs.is_default }} == 'false'
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: ./output # The folder the action should deploy.
+          folder: ./www # The folder the action should deploy.
           target-folder: releases/${{ steps.branch-name.outputs.current_branch }}
           commit-message: Deploy candidate release to gh-pages
           clean: false 
