@@ -65,17 +65,32 @@ jobs:
           # Run the publisher - don't run the batch script but run the line directly
           args: java -jar ./input-cache/publisher.jar publisher -ig .
 
-      - name: actions/setup-node
-        uses: actions/setup-node@v2
+      - name: see if python is installed
+        uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          node-version: "14"
-      - name: npm install
-        run: npm install -g sushi fsh-sushi
+          # Run the publisher - don't run the batch script but run the line directly
+          args: python --version
+
+
+      - name: Execute python script
+        uses: docker://hl7fhir/ig-publisher-base:latest
+        with:
+          # Run the publisher - don't run the batch script but run the line directly
+          args: python release.py
 
 
 
-      - name: execute py script # run 
-        run: python release.py
+
+
+#      - name: actions/setup-node
+#        uses: actions/setup-node@v2
+#        with:
+#          node-version: "14"
+#      - name: npm install
+#        run: npm install -g sushi fsh-sushi
+
+
+
 
       - name: Deploy candidate
         uses: JamesIves/github-pages-deploy-action@4.1.4
