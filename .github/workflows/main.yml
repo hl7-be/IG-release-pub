@@ -64,7 +64,7 @@ jobs:
       - name: install pip
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          args: apt install python3
+          args: sudo apt install python3
           
           
       - name: install pip
