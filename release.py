@@ -37,8 +37,8 @@ if (not(os.path.exists(os.path.join('.','release.json')))):
 with open(os.path.join('.','release.json')) as fd:
     release = json.load(fd)     
 
-
-igrootfolder = os.path.join('..',release['ig'])
+igrootfolder = os.getcwd()
+#igrootfolder = os.path.join('..',release['ig'])
 
 # Variable: release.json.history-template / Default HL7
 
@@ -62,6 +62,19 @@ if (ig_source_repo!=''):
 history_template_repo = release['history_template_repo']
 
 ig_registry_repo = 'https://github.com/FHIR/ig-registry.git'
+
+
+
+# Try and build the IG just to see if it is ok
+if not(skip_1_build):
+  print('\n### Running the publisher to see if everything is ok')
+  result = os.system('java -jar ./input-cache/publisher.jar -ig ig.ini') 
+  if (result!=0):
+      print('Error: IG publication process not successful. Check the IG')
+      exit(2)
+
+  print('\n### Publisher ran ok')
+
 
 
 #### 1.1 ask user for missing variables
@@ -197,16 +210,6 @@ os.chdir(igrootfolder)
 print(os.getcwd())
 
 
-# Try and build the IG
-if not(skip_1_build):
-  print('\n### Running the publisher to see if everything is ok')
-  result = os.system('java -jar ./input-cache/publisher.jar -ig ig.ini') 
-  if (result!=0):
-      print('Error: IG publication process not successful. Check the IG')
-      exit(2)
-
-  print('\n### Publisher ran ok')
-
 
 
 #3.5
@@ -243,7 +246,6 @@ else:
     url = x
     org = y
     no-registry = 1
-
     [feeds]
     package = package-feed.xml
     publication = publication-feed.xml
@@ -367,5 +369,3 @@ if (keep_release_token):
       os. remove(os.path.join('.','release.json'))
 
 exit(0)
-
-
